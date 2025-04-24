@@ -1,1 +1,1 @@
-
+bitcoin-cli -signet -rpcwallet=mywallet getnewaddress "" "bech32" 
