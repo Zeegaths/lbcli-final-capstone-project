@@ -1,9 +1,7 @@
-#!/bin/bash
+# what is the coinbase tx in this block 243,834
+# First get the block hash
+blockhash=$(bitcoin-cli -signet getblockhash 243834)
+echo "Block hash: $blockhash"
 
-# What is the coinbase tx in this block 243,834
-
-# Get block hash
-BLOCK_HASH=$(bitcoin-cli -signet getblockhash 243834)
-
-# Get the coinbase transaction ID (first transaction in the block)
-bitcoin-cli -signet getblock $BLOCK_HASH 2 | jq -r '.tx[0]'
+# Then get the block with that hash
+bitcoin-cli -signet getblock "$blockhash" | jq -r '.tx[0]'
